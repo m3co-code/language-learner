@@ -10,4 +10,6 @@
 /vendor/
 /web/bundles/
 /node_modules
+/dist
 .idea
+.vagrant/

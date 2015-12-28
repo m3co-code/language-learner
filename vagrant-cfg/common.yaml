@@ -1,0 +1,78 @@
+---
+## common config variables
+path: /var/www/language-learner
+vhost: language-learner.dev
+
+## vagrant config
+box_name: mayflower/trusty64-puppet3    # or e.g. mayflower/centos-7.0-64-puppet3
+
+ip: 192.168.56.125 # not relevant for provider lxc
+nfs: true # not relevant for provider lxc
+
+## puppet profiles
+profile::packages::names:
+  - vim
+  - bash-completion
+  - wget
+  - curl
+  - sqlite3
+  - postfix
+  - tig
+
+## puppet files and directories sync
+profile::sync::files:
+  /home/vagrant/.profile:
+    source: file:///vagrant/vagrant-cfg/files/.profile
+
+profile::database::mysql: true
+profile::webserver::nginx: true
+profile::interpreter::php: true
+profile::app::symfony2: false
+profile::app::custom_symfony2: true
+
+mysql::server::root_password: root
+component::mysql::databases:
+  igp:
+    user: dev
+    password: dev
+    host: localhost
+    grant: ['ALL']
+
+## nginx (sendfile is turned off in dev)
+nginx::manage_repo: false
+
+## apt
+apt::always_apt_update: true
+apt::purge_sources_list: false
+apt::purge_sources_list_d: false
+apt::purge_preferences_d: false
+
+# php
+php::extensions:
+  curl: {}
+  json: {}
+  intl: {}
+  mysql: {}
+  sqlite: {}
+  gd: {}
+  xmlrpc: {}
+  apc:
+    package_prefix: php-
+    settings:
+      apc.stat: 1
+      apc.stat_ctime: 1
+  xdebug:
+    settings:
+      xdebug.max_nesting_level: 1000
+      xdebug.remote_enable: 'On'
+      xdebug.default_enable: 'On'
+      xdebug.remote_connect_back: 'On'
+      xdebug.remote_autostart: 'On'
+
+# cli and fpm php.ini settings
+php::settings:
+  Date/date.timezone: Europe/Berlin
+
+# only fpm php.ini settings
+php::fpm::settings:
+  PHP/short_open_tag: 'On'
