@@ -3,7 +3,7 @@ import uirouter from 'angular-ui-router';
 
 import routingConfig from 'routing-config';
 
-import multiLanguageInputComponent from 'components/multi-language-input';
+import MLIComponent from 'components/mli';
 import utilsComponent from 'components/utils';
 import VocabularyComponent from 'components/vocabulary';
 
@@ -16,7 +16,7 @@ import '../scss/main.scss';
 angular
     .module('LanguageLearner', [
         uirouter,
-        multiLanguageInputComponent,
+        MLIComponent,
         utilsComponent,
         VocabularyComponent,
         dashboardModule,

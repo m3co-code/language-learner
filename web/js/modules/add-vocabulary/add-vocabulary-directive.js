@@ -23,9 +23,7 @@ class AddVocabularyirectiveController {
 
     add() {
         this.VocabularyService.add(this.form.data).then((response) => {
-            debugger;
         }, (error) => {
-            debugger;
         });
     }
 }
