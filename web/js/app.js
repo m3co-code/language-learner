@@ -1,26 +1,21 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
+import routingConfig from 'routing-config';
+
+import multiLanguageInputComponent from 'components/multi-language-input';
+import utilsComponent from 'components/utils';
+
+import dashboardModule from 'modules/dashboard';
+
+
 import '../scss/main.scss';
 
-class HelloController {
-    constructor() {
-        this.helloText = 'Yoyoy';
-    }
-}
-
 angular
-    .module('StarterApp', [uirouter])
-    .config(/*ngInject*/($stateProvider, $urlRouterProvider, $locationProvider) => {
-        $stateProvider
-            .state('home', {
-                url: '/',
-                template: '<div class="welcomeText">{{ vm.helloText }}</div>',
-                controller: 'HelloController',
-                controllerAs: 'vm'
-            });
-
-        $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise('/');
-    })
-    .controller('HelloController', HelloController);
+    .module('LanguageLearner', [
+        uirouter,
+        multiLanguageInputComponent,
+        utilsComponent,
+        dashboardModule
+    ])
+    .config(routingConfig);

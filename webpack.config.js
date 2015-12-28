@@ -1,18 +1,25 @@
-var path = require('path');
-var webpack = require('webpack');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var appDir = path.join(__dirname, 'web');
+const appDir = path.join(__dirname, 'web');
+const distDir = path.join(__dirname, 'dist');
 
 module.exports = {
     entry: './web/js/app.js',
     output: {
-        path: appDir,
+        path: distDir,
         filename: 'bundle.js'
     },
-    devtool: 'source-map',
+    resolve: {
+        root: appDir,
+        extensions: ['', '.js', '.html', '.scss'],
+        modulesDirectories: ['node_modules', 'web/js', 'web/scss']
+    },
+    devtool: 'eval-source-map',
     plugins: [
-        new ngAnnotatePlugin({
+        new NgAnnotatePlugin({
             add: true
         }),
         new webpack.optimize.CommonsChunkPlugin({
@@ -25,6 +32,10 @@ module.exports = {
                  **/
                 return module.resource && module.resource.indexOf(appDir) === -1;
             }
+        }),
+        new HtmlWebpackPlugin({
+            template: 'web/index.html', // Load a custom template
+            inject: 'body' // Inject all scripts into the body
         })
     ],
     module: {
