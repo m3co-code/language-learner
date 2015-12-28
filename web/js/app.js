@@ -5,8 +5,10 @@ import routingConfig from 'routing-config';
 
 import multiLanguageInputComponent from 'components/multi-language-input';
 import utilsComponent from 'components/utils';
+import VocabularyComponent from 'components/vocabulary';
 
 import dashboardModule from 'modules/dashboard';
+import AddVocabularyModule from 'modules/add-vocabulary';
 
 
 import '../scss/main.scss';
@@ -16,6 +18,8 @@ angular
         uirouter,
         multiLanguageInputComponent,
         utilsComponent,
-        dashboardModule
+        VocabularyComponent,
+        dashboardModule,
+        AddVocabularyModule
     ])
     .config(routingConfig);
