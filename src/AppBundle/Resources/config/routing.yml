@@ -1,0 +1,9 @@
+app_vocabulary_post:
+    methods: [POST]
+    pattern:  /vocabularies
+    defaults: { _controller: AppBundle:Vocabulary:post }
+
+app_vocabulary_list:
+    methods: [GET]
+    pattern:  /vocabularies
+    defaults: { _controller: AppBundle:Vocabulary:list }
