@@ -8,7 +8,7 @@ import utilsComponent from 'components/utils';
 import VocabularyComponent from 'components/vocabulary';
 
 import dashboardModule from 'modules/dashboard';
-import AddVocabularyModule from 'modules/add-vocabulary';
+import VocabularyModule from 'modules/vocabulary';
 
 
 import '../scss/main.scss';
@@ -20,6 +20,6 @@ angular
         utilsComponent,
         VocabularyComponent,
         dashboardModule,
-        AddVocabularyModule
+        VocabularyModule
     ])
     .config(routingConfig);

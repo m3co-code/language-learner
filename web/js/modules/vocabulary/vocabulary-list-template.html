@@ -1,0 +1,17 @@
+<h2>Your Vocabulary</h2>
+
+<p>You have {{ vm.vocabulary.length }} words in your Vocabulary.</p>
+
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="vocable in vm.vocabulary">
+        <div class="row">
+            <div class="col-md-3">{{ vocable.sourceLanguage }}</div>
+            <div class="col-md-9">{{ vocable.source }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">{{ vocable.targetLanguage }}</div>
+            <div class="col-md-9">{{ vocable.target }}</div>
+        </div>
+    </li>
+</ul>
+

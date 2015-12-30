@@ -6,4 +6,8 @@ export default class VocabularyService {
     add(vocabulary) {
         return this.$http.post('/api/vocabularies', vocabulary);
     }
+
+    getList() {
+        return this.$http.get('/api/vocabularies');
+    }
 }
