@@ -32,7 +32,7 @@ profile::app::custom_symfony2: true
 
 mysql::server::root_password: root
 component::mysql::databases:
-  igp:
+  languagelearner:
     user: dev
     password: dev
     host: localhost
